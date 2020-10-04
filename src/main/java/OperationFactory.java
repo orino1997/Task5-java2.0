@@ -1,6 +1,6 @@
 public class OperationFactory {
 
-    static Operation getOperation(String operationSymbol) {
+    static Operation getOperation(String operationSymbol) throws IllegalMathOperationException {
         OperationType operationType = OperationType.parse(operationSymbol);
         Operation actualOperation;
         switch (operationType) {
@@ -17,7 +17,7 @@ public class OperationFactory {
                 actualOperation = new Sum();
                 break;
             default:
-                throw new IllegalStateException("Unexpected value: " + operationSymbol);
+                throw new IllegalMathOperationException(operationSymbol);
         }
         return actualOperation;
     }

@@ -12,14 +12,13 @@ public enum OperationType {
         this.symbol = s;
     }
 
-    public static OperationType parse(String symbol) {
+    public static OperationType parse(String symbol) throws IllegalMathOperationException {
         for (OperationType type : OperationType.values()) {
             if (type.symbol.equals(symbol)) {
                 return type;
             }
         }
-        throw new IllegalArgumentException(
-                "No enum constant for symbol: '" + symbol + "'");
+        throw new IllegalMathOperationException(symbol);
     }
 
 }
